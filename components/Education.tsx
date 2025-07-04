@@ -50,23 +50,25 @@ bg-blue-600 rounded-full z-10"
                   </div>
                 );
               } else {
-                <div className="w-full flex" key={edu.id}>
-                  <div className="w-1/2 flex justify-end">
-                    <div className="w-4 h-4 bgblue-600 rounded-full z-10"></div>
-                  </div>
-                  <div className="w-1/2 pl-8 text-left">
-                    <p
-                      className="font-semibold
+                return (
+                  <div className="w-full flex" key={edu.id}>
+                    <div className="w-1/2 flex justify-end">
+                      <div className="w-4 h-4 bgblue-600 rounded-full z-10"></div>
+                    </div>
+                    <div className="w-1/2 pl-8 text-left">
+                      <p
+                        className="font-semibold
 text-blue-600"
-                    >
-                      {edu.period}
-                    </p>
-                    <h3 className="text-2xl font-bold text-gray-800">
-                      {edu.institution}
-                    </h3>
-                    <p className="text-gray-600">{edu.major}</p>
+                      >
+                        {edu.period}
+                      </p>
+                      <h3 className="text-2xl font-bold text-gray-800">
+                        {edu.institution}
+                      </h3>
+                      <p className="text-gray-600">{edu.major}</p>
+                    </div>
                   </div>
-                </div>;
+                );
               }
             })}
           </div>
