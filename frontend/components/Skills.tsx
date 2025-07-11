@@ -1,28 +1,42 @@
+"use client";
+
 import SectionTitle from "@/components/ui/SectionTitle";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-const skills = [
-  { name: "JavaScript", icon: "/images/javascript.svg" },
-  { name: "Typescript", icon: "/images/typescript.svg" },
-  { name: "PHP", icon: "/images/php.svg" },
-  { name: "HTML", icon: "/images/html5.svg" },
-  { name: "CSS", icon: "/images/css3.svg" },
-  { name: "JQuery", icon: "/images/jquery.svg" },
-  { name: "Tailwind CSS", icon: "/images/tailwind.svg" },
-  { name: "Bootstrap", icon: "/images/bootstrap.svg" },
-  { name: "CodeIgniter", icon: "/images/codeigniter.svg" },
-  { name: "NextJS", icon: "/images/nextjs.svg" },
-  { name: "Oracle", icon: "/images/oracle.svg" },
-  { name: "MySQL", icon: "/images/mysql.svg" },
-  { name: "PostgreSQL", icon: "/images/postgresql.svg" },
-  { name: "Git", icon: "/images/git.svg" },
-  { name: "Github", icon: "/images/github.svg" },
-  { name: "Gitlab", icon: "/images/gitlab.svg" },
-  { name: "Figma", icon: "/images/figma.svg" },
-  { name: "VS Code", icon: "/images/vscode.svg" },
-];
+interface skill {
+  name: string;
+  icon: string;
+}
 
 export default function Skills() {
+  const [skills, setSkills] = useState<skill[]>([]);
+  const [error, setError] = useState<string | null>(null);
+
+  const API_URL =
+    process.env.NODE_ENV === "production"
+      ? "/api/skills"
+      : "http://localhost:3001/api/skills";
+
+  useEffect(() => {
+    const fetchSkillsData = async () => {
+      try {
+        const response = await axios.get(API_URL);
+        setSkills(response.data);
+      } catch (error) {
+        console.error("Gagal mengambil data skill:", error);
+        setError("Gagal mengambil data skill");
+      }
+    };
+
+    fetchSkillsData();
+  }, []);
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
   return (
     <section id="skills" className="py-20 bg-white">
       <div className="container mx-auto px-6">

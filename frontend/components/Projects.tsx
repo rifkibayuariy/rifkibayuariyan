@@ -5,32 +5,44 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import { useState } from "react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-const projects = [
-  {
-    title: "Tokoquick.id",
-    image: "/images/tokoquick.id.png",
-    description: "Platform e-commerce Quick Tractor.",
-    link: "https://tokoquick.id/",
-  },
-  {
-    title: "Quick.co.id",
-    image: "/images/quick.co.id.png",
-    description: "Website Quick Company",
-    link: "https://quick.co.id/",
-  },
-  {
-    title: "Keyboard Test",
-    image: "/images/keyboardtest.png",
-    description: "The first website I sold",
-    link: "https://rifkibayuariy.github.io/keyboard-test/",
-  },
-];
+interface Project {
+  title: string;
+  image: string;
+  description: string;
+  link: string;
+}
 
 export default function Projects() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [projects, setProject] = useState<Project[]>([]);
+  const [error, setError] = useState<string | null>(null);
+
+  const API_URL =
+    process.env.NODE_ENV === "production"
+      ? "/api/projects"
+      : "http://localhost:3001/api/projects";
+
+  useEffect(() => {
+    const fetchProjectsData = async () => {
+      try {
+        const response = await axios.get(API_URL);
+        setProject(response.data);
+      } catch (error) {
+        console.error("Gagal mengambil data project:", error);
+        setError("Gagal mengambil data project");
+      }
+    };
+
+    fetchProjectsData();
+  }, []);
+
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
     <section id="projects" className="py-20 bg-white">

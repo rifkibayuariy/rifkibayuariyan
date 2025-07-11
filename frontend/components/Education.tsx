@@ -1,27 +1,43 @@
-import SectionTitle from "@/components/ui/SectionTitle";
+"use client";
 
-const educationHistory = [
-  {
-    id: 1,
-    period: "2023 - Sekarang",
-    institution: "Universitas Amikom Yogyakarta",
-    major: "S1 - Teknik Informatika",
-  },
-  {
-    id: 2,
-    period: "2018 - 2022",
-    institution: "SMK Negeri 2 Klaten",
-    major: "Sistem Informasi Jaringan dan Aplikasi",
-  },
-  {
-    id: 3,
-    period: "2015 - 2018",
-    institution: "SMP Negeri 1 Manisrenggo",
-    major: "Reguler",
-  },
-];
+import SectionTitle from "@/components/ui/SectionTitle";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
+interface Education {
+  id: number;
+  period: string;
+  institution: string;
+  major: string;
+}
 
 export default function Education() {
+  const [educationHistory, setEducationHistory] = useState<Education[]>([]);
+  const [error, setError] = useState<string | null>(null);
+
+  const API_URL =
+    process.env.NODE_ENV === "production"
+      ? "/api/education"
+      : "http://localhost:3001/api/education";
+
+  useEffect(() => {
+    const fetchEducationData = async () => {
+      try {
+        const response = await axios.get(API_URL);
+        setEducationHistory(response.data);
+      } catch (error) {
+        console.error("Gagal mengambil data pendidikan:", error);
+        setError("Gagal mengambil data pendidikan");
+      }
+    };
+
+    fetchEducationData();
+  }, []);
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
   return (
     <section id="education" className="py-20 bg-white">
       <div className="container mx-auto px-6">
