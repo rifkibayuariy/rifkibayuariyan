@@ -81,9 +81,12 @@ export default function Navbar() {
           })}
         </ul>
         <div>
-          <button className="px-4 font-bold text-white py-2 bg-main rounded-lg hidden md:block">
+          <a
+            href="#contacts"
+            className="px-4 font-bold text-white py-2 bg-main rounded-lg hidden md:block cursor-pointer"
+          >
             Let's Talk
-          </button>
+          </a>
         </div>
       </nav>
     </header>
