@@ -15,11 +15,11 @@ const listmenu = [
   },
   {
     name: "Skills",
-    href: "",
+    href: "#skills",
   },
   {
     name: "Projects",
-    href: "",
+    href: "#projects",
   },
 ];
 
@@ -72,7 +72,7 @@ export default function Navbar() {
               <li key={menu.name}>
                 <a
                   href={menu.href}
-                  className={`text-main ${isActive ? "font-bold" : ""}`}
+                  className={`text-main text-lg ${isActive ? "font-bold" : ""}`}
                 >
                   {menu.name}
                 </a>

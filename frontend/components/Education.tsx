@@ -23,7 +23,7 @@ const educationHistory = [
 
 export default function Education() {
   return (
-    <section id="education" className="py-20 bg-white lg:bg-slate-50">
+    <section id="education" className="py-20 bg-white">
       <div className="container mx-auto px-6">
         <SectionTitle title="Education" />
         <div className="relative">
@@ -32,7 +32,7 @@ export default function Education() {
               {educationHistory.map((edu) => {
                 return (
                   <div
-                    className="flex flex-row items-center lg:p-6 lg:border lg:border-secondary lg:rounded-xl"
+                    className="flex flex-row items-center lg:p-6 lg:bg-slate-100 lg:rounded-xl"
                     key={edu.id}
                   >
                     <div className="pr-8 h-full flex items-center lg:hidden">
