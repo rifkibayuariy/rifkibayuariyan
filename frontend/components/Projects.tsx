@@ -1,73 +1,88 @@
+"use client";
+
 import SectionTitle from "@/components/ui/SectionTitle";
-// import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import { useState } from "react";
 import Link from "next/link";
 
 const projects = [
   {
-    title: "Website Toko Online",
-    image: "https://via.placeholder.com/500x300?text=Proyek+1",
-    description: "Platform e-commerce dengan fitur keranjang belanja.",
-    tech: ["Vue.js", "Express.js", "PostgreSQL"],
-    link: "#",
+    title: "Tokoquick.id",
+    image: "/images/tokoquick.id.png",
+    description: "Platform e-commerce Quick Tractor.",
+    link: "https://tokoquick.id/",
   },
   {
-    title: "Aplikasi Manajemen Tugas",
-    image: "https://via.placeholder.com/500x300?text=Proyek+2",
-    description: "Aplikasi untuk melacak progres tugas harian.",
-    tech: ["React", "Firebase"],
-    link: "#",
+    title: "Quick.co.id",
+    image: "/images/quick.co.id.png",
+    description: "Website Quick Company",
+    link: "https://quick.co.id/",
+  },
+  {
+    title: "Keyboard Test",
+    image: "/images/keyboardtest.png",
+    description: "The first website I sold",
+    link: "https://rifkibayuariy.github.io/keyboard-test/",
   },
 ];
 
 export default function Projects() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
   return (
-    <section id="proyek" className="py-20 bg-white">
+    <section id="projects" className="py-20 bg-white">
       <div className="container mx-auto px-6">
-        <SectionTitle title="Proyek Unggulan" />
-        <div className="grid md:grid-cols-2 gap-12">
-          {projects.map((project) => {
-            return (
-              <div key={project.title}>
-                {/* <Image
-                  src={project.image}
-                  alt="Gambar Proyek"
-                  className="w-full
-h-56 object-cover"
-                /> */}
-                <img
-                  src="project.image"
-                  alt="Gambar Proyek"
-                  className="w-full
-h-56 object-cover"
-                />
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold text-gray-800 mb-2">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-600 mb-4">{project.description}</p>
-                  <div className="mb-4">
-                    {project.tech.map((t) => {
-                      return (
-                        <span
-                          key={t}
-                          className="inline-block bg-blue-100 text-blue-800 text-sm font-semibold mr-2 mb-2 px-2.5
-                            py-0.5 rounded-full"
-                        ></span>
-                      );
-                    })}
+        <SectionTitle title="Projects" />
+        <Swiper
+          spaceBetween={24}
+          slidesPerView={1.2}
+          centeredSlides
+          loop
+          pagination={{ clickable: true }}
+          modules={[Pagination]}
+          onSlideChange={(swiper) => {
+            const realIndex = swiper.realIndex;
+            setCurrentIndex(realIndex);
+          }}
+          breakpoints={{
+            768: {
+              slidesPerView: 1.5,
+            },
+            1024: {
+              slidesPerView: 2.2,
+            },
+          }}
+        >
+          {projects.map((project, i) => (
+            <SwiperSlide key={i}>
+              <Link href={project.link} target="_blank">
+                <div className="relative aspect-video rounded-xl overflow-hidden shadow-lg">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+
+                  <div className="absolute inset-0 bg-black/10"></div>
+
+                  <div className="absolute bottom-0 left-0 right-0 p-8 text-white bg-gradient-to-t from-black/60 via-black/30 to-transparent z-10">
+                    <h3 className="text-lg font-semibold font-redhat">
+                      {project.title}
+                    </h3>
+                    <p className="text-sm font-jakarta">
+                      {project.description}
+                    </p>
                   </div>
-                  <Link
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-600 font-semibold hover:underline"
-                  >
-                    Lihat Detail &rarr;
-                  </Link>
                 </div>
-              </div>
-            );
-          })}
+              </Link>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        <div className="mt-4 text-center text-sm text-main font-jakarta font-semibold">
+          Project {currentIndex + 1} / {projects.length}
         </div>
       </div>
     </section>

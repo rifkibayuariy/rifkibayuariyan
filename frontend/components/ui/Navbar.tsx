@@ -50,7 +50,7 @@ export default function Navbar() {
       }`}
     >
       <nav
-        className={`container mx-auto px-8 flex justify-between items-center`}
+        className={`container mx-auto px-12 lg:px-8 flex justify-between items-center`}
       >
         <div className="flex gap-4 items-center">
           <Images
