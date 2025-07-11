@@ -9,7 +9,7 @@ export default function Hero() {
       <div className="h-full flex-1/4 flex items-start lg:items-center lg:justify-end">
         <div className="lg:-mr-24 mt-48 md:mt-60 lg:mt-0 w-76 md:w-156 lg:w-fit px-12 md:px-24 lg:px-0">
           <h2 className="font-redhat text-main mb-2 text-2xl md:text-3xl lg:text-4xl">
-            Hello, I'm
+            Hello, I&apos;m
           </h2>
           <h1 className="font-extrabold text-main text-4xl md:text-6xl font-redhat">
             Rifki Bayu
@@ -17,7 +17,7 @@ export default function Hero() {
           <p className="w-full lg:w-88 text-md md:text-xl text-slate-500 mt-10 lg:mt-12">
             I am a full-stack web developer who interested in the Javascript
             language. However, in my work practice I mostly use the PHP
-            language. I'm currently trying to learn ReactJS.
+            language. I&apos;m currently trying to learn ReactJS.
           </p>
         </div>
       </div>

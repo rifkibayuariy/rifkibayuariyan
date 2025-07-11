@@ -85,7 +85,7 @@ export default function Navbar() {
             href="#contacts"
             className="px-4 font-bold text-white py-2 bg-main rounded-lg hidden md:block cursor-pointer"
           >
-            Let's Talk
+            Let&apos;s Talk
           </a>
         </div>
       </nav>
