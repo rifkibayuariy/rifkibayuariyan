@@ -23,7 +23,7 @@ const educationHistory = [
 
 export default function Education() {
   return (
-    <section id="education" className="py-20 bg-slate-50">
+    <section id="education" className="py-20 bg-white lg:bg-slate-50">
       <div className="container mx-auto px-6">
         <SectionTitle title="Education" />
         <div className="relative">

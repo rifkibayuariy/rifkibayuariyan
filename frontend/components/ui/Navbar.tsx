@@ -1,12 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Images from "next/image";
 
 const listmenu = [
   {
     name: "Profile",
-    href: "#hero",
+    href: "#profile",
   },
   {
     name: "Education",
@@ -23,10 +24,12 @@ const listmenu = [
 ];
 
 export default function Navbar() {
+  const pathname = usePathname();
+
   const [scrolled, setScrolled] = useState(false);
 
   const handleScroll = () => {
-    if (window.scrollY > window.innerHeight - 200) {
+    if (window.scrollY > window.innerHeight - 400) {
       setScrolled(true);
     } else {
       setScrolled(false);
@@ -63,9 +66,14 @@ export default function Navbar() {
         </div>
         <ul className="md:flex flex-row gap-8 font-jakarta hidden">
           {listmenu.map((menu) => {
+            const isActive = pathname === menu.href;
+
             return (
               <li key={menu.name}>
-                <a href={menu.href} className="text-main">
+                <a
+                  href={menu.href}
+                  className={`text-main ${isActive ? "font-bold" : ""}`}
+                >
                   {menu.name}
                 </a>
               </li>

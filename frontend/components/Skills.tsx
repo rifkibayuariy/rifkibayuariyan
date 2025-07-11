@@ -13,9 +13,9 @@ const skills = [
 
 export default function Skills() {
   return (
-    <section id="skill" className="py-20 bg-gray-50">
+    <section id="skills" className="py-20 bg-white">
       <div className="container mx-auto px-6">
-        <SectionTitle title="Keahlian & Teknologi" />
+        <SectionTitle title="Skills and Tools" />
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {skills.map((skill) => {
             return (
