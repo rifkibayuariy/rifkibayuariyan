@@ -1,5 +1,5 @@
 import Navbar from "@/components/ui/Navbar";
-import Hero from "@/components/ui/Hero";
+import Hero from "@/components/Hero";
 import Education from "@/components/Education";
 import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
@@ -11,18 +11,10 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <div>
-          <Education />
-        </div>
-        <div>
-          <Skills />
-        </div>
-        <div>
-          <Projects />
-        </div>
-        <div>
-          <Contact />
-        </div>
+        <Education />
+        <Skills />
+        <Projects />
+        <Contact />
       </main>
     </div>
   );

@@ -1,54 +1,82 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import Images from "next/image";
+
+const listmenu = [
+  {
+    name: "Profile",
+    href: "#hero",
+  },
+  {
+    name: "Education",
+    href: "#education",
+  },
+  {
+    name: "Skills",
+    href: "",
+  },
+  {
+    name: "Projects",
+    href: "",
+  },
+];
+
 export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+
+  const handleScroll = () => {
+    if (window.scrollY > window.innerHeight - 200) {
+      setScrolled(true);
+    } else {
+      setScrolled(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <header className="bg-white shadow-md sticky top-0 z-50 animate-fade-in">
-      <nav className="container mx-auto px-6 py-4 flex justify-between itemscenter">
-        <div className="text-2xl font-bold text-gray-800">Nama Mahasiswa</div>
-        <ul className="flex space-x-6">
-          <li>
-            <a
-              href="#profil"
-              className="text-gray-600 hover:text-blue-500
-transform hover:-translate-y-0.5 transition-all duration300"
-            >
-              Profil
-            </a>
-          </li>
-          <li>
-            <a
-              href="#pendidikan"
-              className="text-gray-600 hover:text-blue500 transform hover:-translate-y-0.5 transition-all duration300"
-            >
-              Pendidikan
-            </a>
-          </li>
-          <li>
-            <a
-              href="#skill"
-              className="text-gray-600 hover:text-blue-500
-transform hover:-translate-y-0.5 transition-all duration300"
-            >
-              Skill
-            </a>
-          </li>
-          <li>
-            <a
-              href="#proyek"
-              className="text-gray-600 hover:text-blue-500
-transform hover:-translate-y-0.5 transition-all duration300"
-            >
-              Proyek
-            </a>
-          </li>
-          <li>
-            <a
-              href="#kontak"
-              className="text-gray-600 hover:text-blue-500
-transform hover:-translate-y-0.5 transition-all duration300"
-            >
-              Kontak
-            </a>
-          </li>
+    <header
+      className={`fixed top-0 w-full z-50 animate-fade-in ${
+        scrolled ? "bg-white shadow-sm py-4" : "py-8"
+      }`}
+    >
+      <nav
+        className={`container mx-auto px-8 flex justify-between items-center`}
+      >
+        <div className="flex gap-4 items-center">
+          <Images
+            src="/images/profile-cropped.png"
+            alt="Hero Image"
+            width={36}
+            height={36}
+            className="rounded-full bg-slate-400"
+          ></Images>
+          <span className="font-bold text-main font-jakarta">
+            Rifki Bayu Ariyanto
+          </span>
+        </div>
+        <ul className="md:flex flex-row gap-8 font-jakarta hidden">
+          {listmenu.map((menu) => {
+            return (
+              <li key={menu.name}>
+                <a href={menu.href} className="text-main">
+                  {menu.name}
+                </a>
+              </li>
+            );
+          })}
         </ul>
+        <div>
+          <button className="px-4 font-bold text-white py-2 bg-main rounded-lg hidden md:block">
+            Let's Talk
+          </button>
+        </div>
       </nav>
     </header>
   );

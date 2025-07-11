@@ -3,74 +3,58 @@ import SectionTitle from "@/components/ui/SectionTitle";
 const educationHistory = [
   {
     id: 1,
-    period: "2022 - Sekarang",
-    institution: "Universitas Gadjah Mada",
+    period: "2023 - Sekarang",
+    institution: "Universitas Amikom Yogyakarta",
     major: "S1 - Teknik Informatika",
   },
   {
     id: 2,
-    period: "2019 - 2022",
-    institution: "SMA Negeri 1 Teladan Yogyakarta",
-    major: "MIPA",
+    period: "2018 - 2022",
+    institution: "SMK Negeri 2 Klaten",
+    major: "Sistem Informasi Jaringan dan Aplikasi",
+  },
+  {
+    id: 3,
+    period: "2015 - 2018",
+    institution: "SMP Negeri 1 Manisrenggo",
+    major: "Reguler",
   },
 ];
 
 export default function Education() {
   return (
-    <section id="pendidikan" className="py-20 bg-white">
+    <section id="education" className="py-20 bg-slate-50">
       <div className="container mx-auto px-6">
-        <SectionTitle title="Riwayat Pendidikan" />
+        <SectionTitle title="Education" />
         <div className="relative">
-          <div
-            className="absolute h-full border-r-2 border-gray-300"
-            style={{ left: "50%" }}
-          >
-            {educationHistory.map((edu, index) => {
-              if (index % 2 == 0) {
+          <div className="flex justify-center items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:w-full">
+              {educationHistory.map((edu) => {
                 return (
-                  <div className="w-full flex" key={edu.id}>
-                    <div className="w-1/2 pr-8 text-right">
-                      <p
-                        className="font-semibold
-text-blue-600"
-                      >
-                        {edu.period}
-                      </p>
-                      <h3 className="text-2xl font-bold text-gray-800">
-                        {edu.institution}
-                      </h3>
-                      <p className="text-gray-600">{edu.major}</p>
+                  <div
+                    className="flex flex-row items-center lg:p-6 lg:border lg:border-secondary lg:rounded-xl"
+                    key={edu.id}
+                  >
+                    <div className="pr-8 h-full flex items-center lg:hidden">
+                      <div className="h-3 w-3 rounded-full bg-main"></div>
                     </div>
-                    <div className="w-1/2 flex justify-start">
-                      <div
-                        className="w-4 h-4
-bg-blue-600 rounded-full z-10"
-                      ></div>
+                    <div>
+                      <div className="w-full flex flex-col">
+                        <p className="font-semibold text-xs font-jakarta text-main lg:text-white lg:px-2 lg:py-1 lg:bg-main lg:w-fit lg:font-extrabold lg:rounded-md">
+                          {edu.period}
+                        </p>
+                        <h3 className="text-lg md:text-xl lg:text-2xl font-bold font-redhat text-main mt-1 lg:mt-2">
+                          {edu.institution}
+                        </h3>
+                        <p className="text-gray-600 mt-2 text-sm">
+                          {edu.major}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 );
-              } else {
-                return (
-                  <div className="w-full flex" key={edu.id}>
-                    <div className="w-1/2 flex justify-end">
-                      <div className="w-4 h-4 bgblue-600 rounded-full z-10"></div>
-                    </div>
-                    <div className="w-1/2 pl-8 text-left">
-                      <p
-                        className="font-semibold
-text-blue-600"
-                      >
-                        {edu.period}
-                      </p>
-                      <h3 className="text-2xl font-bold text-gray-800">
-                        {edu.institution}
-                      </h3>
-                      <p className="text-gray-600">{edu.major}</p>
-                    </div>
-                  </div>
-                );
-              }
-            })}
+              })}
+            </div>
           </div>
         </div>
       </div>
