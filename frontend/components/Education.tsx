@@ -17,8 +17,6 @@ export default function Education() {
 
   const API_URL = `${process.env.NEXT_PUBLIC_API_URL}/education`;
 
-  console.log(API_URL);
-
   useEffect(() => {
     const fetchEducationData = async () => {
       try {
