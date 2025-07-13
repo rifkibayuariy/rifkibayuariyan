@@ -11,6 +11,7 @@ app.get("/api/education", async (req, res) => {
     const { rows } = await sql`SELECT * FROM education ORDER BY period DESC;`;
     res.status(200).json(rows);
   } catch (error) {
+    console.error("Database Error:", error);
     res.status(500).json({ error: "Gagal mengambil data pendidikan" });
   }
 });
@@ -19,6 +20,7 @@ app.get("/api/skills", async (req, res) => {
     const { rows } = await sql`SELECT * FROM skills;`;
     res.status(200).json(rows);
   } catch (error) {
+    console.error("Database Error:", error);
     res.status(500).json({ error: "Gagal mengambil data skill" });
   }
 });
