@@ -15,10 +15,7 @@ export default function Education() {
   const [educationHistory, setEducationHistory] = useState<Education[]>([]);
   const [error, setError] = useState<string | null>(null);
 
-  const API_URL =
-    process.env.NODE_ENV === "production"
-      ? "/api/education"
-      : "http://localhost:3001/api/education";
+  const API_URL = `${process.env.NEXT_PUBLIC_API_URL}/education`;
 
   useEffect(() => {
     const fetchEducationData = async () => {

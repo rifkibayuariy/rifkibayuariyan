@@ -17,7 +17,7 @@ app.get("/api/education", async (req, res) => {
 });
 app.get("/api/skills", async (req, res) => {
   try {
-    const { rows } = await sql`SELECT * FROM skills;`;
+    const { rows } = await sql`SELECT * FROM skills ORDER BY id ASC;`;
     res.status(200).json(rows);
   } catch (error) {
     console.error("Database Error:", error);

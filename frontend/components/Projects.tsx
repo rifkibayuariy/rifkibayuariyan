@@ -21,10 +21,7 @@ export default function Projects() {
   const [projects, setProject] = useState<Project[]>([]);
   const [error, setError] = useState<string | null>(null);
 
-  const API_URL =
-    process.env.NODE_ENV === "production"
-      ? "/api/projects"
-      : "http://localhost:3001/api/projects";
+  const API_URL = `${process.env.NEXT_PUBLIC_API_URL}/projects`;
 
   useEffect(() => {
     const fetchProjectsData = async () => {
