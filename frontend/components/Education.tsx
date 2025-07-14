@@ -37,37 +37,73 @@ export default function Education() {
 
   return (
     <section id="education" className="py-20 bg-white">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto">
         <SectionTitle title="Education" />
-        <div className="relative">
-          <div className="flex justify-center items-center">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:w-full">
-              {educationHistory.map((edu) => {
+        <div className="px-8">
+          <div className="flex flex-col">
+            {educationHistory.map((edu, i) => {
+              if (i % 2 == 0) {
                 return (
-                  <div
-                    className="flex flex-row items-center lg:p-6 lg:bg-slate-100 lg:rounded-xl"
-                    key={edu.id}
-                  >
-                    <div className="pr-8 h-full flex items-center lg:hidden">
-                      <div className="h-3 w-3 rounded-full bg-main"></div>
+                  <div key={i} className="flex flex-row relative">
+                    <div className="flex-1/2 flex items-center justify-end pr-8">
+                      <p className="text-white font-semibold text-xs px-2 py-0.5 bg-main rounded-md">
+                        {edu.period}
+                      </p>
                     </div>
-                    <div>
-                      <div className="w-full flex flex-col">
-                        <p className="font-semibold text-xs font-jakarta text-main lg:text-white lg:px-2 lg:py-1 lg:bg-main lg:w-fit lg:font-extrabold lg:rounded-md">
-                          {edu.period}
-                        </p>
-                        <h3 className="text-lg md:text-xl lg:text-2xl font-bold font-redhat text-main mt-1 lg:mt-2">
-                          {edu.institution}
-                        </h3>
-                        <p className="text-gray-600 mt-2 text-sm">
-                          {edu.major}
-                        </p>
+                    <div className="flex-1/2 pl-8 py-6">
+                      <h3 className="text-lg md:text-xl lg:text-2xl font-bold font-redhat text-main mt-1 lg:mt-2 leading-5">
+                        {edu.institution}
+                      </h3>
+                      <p className="text-gray-600 mt-2 text-sm">{edu.major}</p>
+                    </div>
+                    <div className="absolute left-1/2 -ml-2 top-0 bottom-0">
+                      <div className="relative h-full flex justify-center items-center">
+                        <div className="w-4 xl:w-5 h-4 xl:h-5 rounded-full bg-teal-400 relative z-10"></div>
+                        <div
+                          className={`w-0.25 ${
+                            educationHistory.length - 1 == i
+                              ? "h-1/2 top-0"
+                              : i == 0
+                              ? "h-1/2 top-1/2"
+                              : "h-full top-0"
+                          } bg-teal-400 absolute top-0`}
+                        ></div>
                       </div>
                     </div>
                   </div>
                 );
-              })}
-            </div>
+              } else {
+                return (
+                  <div key={i} className="flex flex-row relative">
+                    <div className="flex-1/2 pr-8 py-6 text-right">
+                      <h3 className="text-lg md:text-xl lg:text-2xl font-bold font-redhat text-main mt-1 lg:mt-2 leading-5">
+                        {edu.institution}
+                      </h3>
+                      <p className="text-gray-600 mt-2 text-sm">{edu.major}</p>
+                    </div>
+                    <div className="flex-1/2 flex items-center justify-start pl-8">
+                      <p className="text-white font-semibold text-xs px-2 py-0.5 bg-main rounded-md">
+                        {edu.period}
+                      </p>
+                    </div>
+                    <div className="absolute left-1/2 -ml-2 top-0 bottom-0">
+                      <div className="relative h-full flex justify-center items-center">
+                        <div className="w-4 xl:w-5 h-4 xl:h-5 rounded-full bg-teal-400 relative z-10"></div>
+                        <div
+                          className={`w-0.25 ${
+                            educationHistory.length - 1 == i
+                              ? "h-1/2 top-0"
+                              : i == 0
+                              ? "h-1/2 top-1/2"
+                              : "h-full top-0"
+                          } bg-teal-400 absolute top-0`}
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              }
+            })}
           </div>
         </div>
       </div>
