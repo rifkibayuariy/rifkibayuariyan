@@ -17,7 +17,7 @@ interface Project {
 }
 
 export default function Projects() {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(1);
   const [projects, setProject] = useState<Project[]>([]);
   const [error, setError] = useState<string | null>(null);
 
