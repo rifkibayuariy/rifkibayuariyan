@@ -10,6 +10,10 @@ const listmenu = [
     href: "#profile",
   },
   {
+    name: "Experience",
+    href: "#experience",
+  },
+  {
     name: "Education",
     href: "#education",
   },
@@ -29,7 +33,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   const handleScroll = () => {
-    if (window.scrollY > window.innerHeight - 400) {
+    if (window.scrollY > 100) {
       setScrolled(true);
     } else {
       setScrolled(false);
@@ -50,7 +54,7 @@ export default function Navbar() {
       }`}
     >
       <nav
-        className={`container mx-auto px-12 lg:px-8 flex justify-between items-center`}
+        className={`w-full px-8 md:px-32 xl:px-16 2xl:px-32 flex justify-between items-center`}
       >
         <div className="flex gap-4 items-center">
           <Images
@@ -64,7 +68,7 @@ export default function Navbar() {
             Rifki Bayu Ariyanto
           </span>
         </div>
-        <ul className="md:flex flex-row gap-8 font-jakarta hidden">
+        <ul className="xl:flex flex-row gap-8 font-jakarta hidden">
           {listmenu.map((menu) => {
             const isActive = pathname === menu.href;
 
@@ -83,7 +87,7 @@ export default function Navbar() {
         <div>
           <a
             href="#contacts"
-            className="px-4 font-bold text-white py-2 bg-main rounded-lg hidden md:block cursor-pointer"
+            className="px-4 font-bold text-white py-2 bg-main rounded-xl hidden md:block cursor-pointer"
           >
             Let&apos;s Talk
           </a>
