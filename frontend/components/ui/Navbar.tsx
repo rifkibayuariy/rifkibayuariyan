@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
 import Images from "next/image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 const listmenu = [
   {
@@ -28,9 +29,12 @@ const listmenu = [
 ];
 
 export default function Navbar() {
-  const pathname = usePathname();
-
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen((prev) => !prev);
+  };
 
   const handleScroll = () => {
     if (window.scrollY > 100) {
@@ -70,14 +74,9 @@ export default function Navbar() {
         </div>
         <ul className="xl:flex flex-row gap-8 font-jakarta hidden">
           {listmenu.map((menu) => {
-            const isActive = pathname === menu.href;
-
             return (
               <li key={menu.name}>
-                <a
-                  href={menu.href}
-                  className={`text-main text-lg ${isActive ? "font-bold" : ""}`}
-                >
+                <a href={menu.href} className={`text-main text-lg`}>
                   {menu.name}
                 </a>
               </li>
@@ -91,6 +90,30 @@ export default function Navbar() {
           >
             Let&apos;s Talk
           </a>
+          <div className="md:hidden relative">
+            <button className="text-main cursor-pointer" onClick={toggleMenu}>
+              <FontAwesomeIcon icon={menuOpen ? faXmark : faBars} size="xl" />
+            </button>
+            {menuOpen && (
+              <div className="absolute mt-4 right-0 px-8 py-4 rounded-lg bg-white/30 backdrop-filter backdrop-blur-lg border border-white/30">
+                <ul className="flex flex-col gap-3 font-jakarta md:hidden">
+                  {listmenu.map((menu) => {
+                    return (
+                      <li key={menu.name}>
+                        <a
+                          href={menu.href}
+                          className={`text-main text-md`}
+                          onClick={() => setMenuOpen(false)}
+                        >
+                          {menu.name}
+                        </a>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            )}
+          </div>
         </div>
       </nav>
     </header>
