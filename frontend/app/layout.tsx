@@ -8,6 +8,9 @@ config.autoAddCss = false;
 export const metadata: Metadata = {
   title: "Rifki Bayu Ariyanto",
   description: "Personal Website",
+  icons: {
+    icon: "images/profile.png",
+  },
 };
 
 export default function RootLayout({
