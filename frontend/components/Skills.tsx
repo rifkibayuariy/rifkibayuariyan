@@ -38,7 +38,7 @@ export default function Skills() {
     <section id="skills" className="py-20 bg-white">
       <div className="container mx-auto px-6">
         <SectionTitle title="Skills and Tools" />
-        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4">
+        <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3 md:gap-4">
           {skills.map((skill, i) => (
             <div
               key={i}
@@ -49,7 +49,7 @@ export default function Skills() {
                 alt={skill.name}
                 width={64}
                 height={64}
-                className="w-2/3 h-2/3 object-contain"
+                className="w-4/5 md:w-2/3 h-4/5 md:h-2/3 object-contain"
               />
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-white/20 backdrop-filter backdrop-blur-md transition-opacity text-main font-redhat font-extrabold text-lg">
                 {skill.name}

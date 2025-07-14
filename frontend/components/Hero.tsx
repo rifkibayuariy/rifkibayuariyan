@@ -10,7 +10,10 @@ import {
 
 export default function Hero() {
   return (
-    <section className="w-full h-screen relative bg-slate-100 overflow-hidden">
+    <section
+      id="profile"
+      className="w-full h-screen relative bg-slate-100 overflow-hidden"
+    >
       <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/10 xl:-translate-y-2/5 h-2/5 md:h-3/5 xl:h-4/5 aspect-square rounded-full bg-teal-400 z-0"></div>
       <div className="absolute left-1/2 bottom-0 transform -translate-x-1/2 h-8/12 xl:h-full aspect-square">
         <Images
